@@ -72,3 +72,9 @@ printf $(kubectl get secret cd-jenkins -o jsonpath="{.data.jenkins-admin-passwor
 export POD_NAME=$(kubectl get pods -l "component=cd-jenkins-master" -o jsonpath="{.items[0].metadata.name}")
 kubectl port-forward $POD_NAME 8080:8080 >> /dev/null &
 ```
+
+### Jenkins configuration
+
+Add the credentials created above so that Jenkins may have access to the Kubernetes cluster.
+
+Create a new item, a Multibranch Pipeline, using the HTTPS url of this GitHub repository.
